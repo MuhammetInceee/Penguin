@@ -7,8 +7,9 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float playerSpeed;
-    
+
     [Header("Booleans")] 
+    public bool canMove;
     private bool _goLeft;
     private bool _goRight;
     private bool _goUp;
@@ -24,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject leftUpCorner;
     [SerializeField] private GameObject rightBottomCorner;
 
+
+    private bool Stopper => GetComponent<Rigidbody2D>().velocity.x is <= 0 and <= 0;
     private Vector3 Pos
     {
         get => transform.position;
@@ -35,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void StartInit()
     {
-        ButtonsActivator();
+        
     }
     private void UpdateInit()
     {
@@ -44,8 +47,17 @@ public class PlayerMovement : MonoBehaviour
     
     #region Movement Button
 
+    public void IsStop()
+    {
+        if (!Stopper) return;
+        _goDown = false;
+        _goLeft = false;
+        _goRight = false;
+        _goUp = false;
+    }
     private void ButtonChecker()
     {
+        if(!canMove) return;
         if (_goLeft)
             transform.Translate(new Vector2(-1 * playerSpeed * Time.deltaTime, 0));
         
@@ -62,24 +74,28 @@ public class PlayerMovement : MonoBehaviour
     public void LeftButtonMovement()
     {
         _goLeft = true;
+        canMove = true;
         AllButtonInActive();
     }
 
     public void RightButtonMovement()
     {
         _goRight = true;
+        canMove = true;
         AllButtonInActive();
     }
 
     public void UpButtonMovement()
     {
         _goUp = true;
+        canMove = true;
         AllButtonInActive();
     }
 
     public void DownButtonMovement()
     {
         _goDown = true;
+        canMove = true;
         AllButtonInActive();
     }
 
@@ -87,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
 
     #region ButtonsActiveChanger
 
-    private void AllButtonInActive()
+    public void AllButtonInActive()
     {
         leftButton.gameObject.SetActive(false);
         rightButton.gameObject.SetActive(false);
@@ -95,53 +111,53 @@ public class PlayerMovement : MonoBehaviour
         downButton.gameObject.SetActive(false);
     }
 
-    private void ButtonsActivator()
+    public void ButtonsActivator()
     {
+        
+        rightButton.gameObject.SetActive(true);
+        leftButton.gameObject.SetActive(true);
+        downButton.gameObject.SetActive(true);
+        upButton.gameObject.SetActive(true);
+        
         if (Pos.x <= leftUpCorner.transform.position.x && Pos.y >= leftUpCorner.transform.position.y)
         {
-            rightButton.gameObject.SetActive(true);
-            downButton.gameObject.SetActive(true);
+            upButton.gameObject.SetActive(false);
+            leftButton.gameObject.SetActive(false);
             print("third");
         }
         
         else if (Pos.x <= leftUpCorner.transform.position.x)
         {
-            rightButton.gameObject.SetActive(true);
-            upButton.gameObject.SetActive(true);
-            downButton.gameObject.SetActive(true);
+            leftButton.gameObject.SetActive(false);
             print("first");
         }
 
         else if (Pos.y >= leftUpCorner.transform.position.y)
         {
-            rightButton.gameObject.SetActive(true);
-            leftButton.gameObject.SetActive(true);
-            downButton.gameObject.SetActive(true);
+            upButton.gameObject.SetActive(false);
             print("second");
         }
         
         if (Pos.x >= rightBottomCorner.transform.position.x && Pos.y <= rightBottomCorner.transform.position.y)
         {
-            upButton.gameObject.SetActive(true);
-            leftButton.gameObject.SetActive(true);
+            downButton.gameObject.SetActive(false);
+            rightButton.gameObject.SetActive(false);
             print("last");
         }
         
         else if (Pos.x >= rightBottomCorner.transform.position.x)
         {
-            upButton.gameObject.SetActive(true);
-            downButton.gameObject.SetActive(true);
-            leftButton.gameObject.SetActive(true);
+            rightButton.gameObject.SetActive(false);
             print("fourth");
         }
 
         else if (Pos.y <= rightBottomCorner.transform.position.y)
         {
-            upButton.gameObject.SetActive(true);
-            rightButton.gameObject.SetActive(true);
-            leftButton.gameObject.SetActive(true);
+            downButton.gameObject.SetActive(false);
             print("fifth");
         }
+        
+        
     }
     #endregion
 }
