@@ -55,6 +55,26 @@ public class SelectManager : MonoBehaviour
                     }
                 }
                 break;
+            case "Seal":
+                if (selectedGo == null)
+                {
+                    selectedGo = hit.collider.gameObject;
+                    selectedGo.GetComponent<PlayerMovement>().ButtonsActivator();
+                }
+                else
+                {
+                    selectedGo.GetComponent<PlayerMovement>().AllButtonInActive();
+                    if (hit.collider.gameObject == selectedGo)
+                    {
+                        selectedGo = null;
+                    }
+                    else
+                    {
+                        selectedGo = hit.collider.gameObject;
+                        selectedGo.GetComponent<PlayerMovement>().ButtonsActivator();
+                    }
+                }
+                break;
         }
     }
 }
