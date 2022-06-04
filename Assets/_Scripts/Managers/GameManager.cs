@@ -8,11 +8,13 @@ public class GameManager : Singleton<GameManager>
 {
     [Header("About Score: ")]
     public float score;
-
-    [Header("About Active Penguin"), Space] 
+    
+    [Space]
+    [Header("About Active Penguin:")] 
     public List<GameObject> activePenguin = new List<GameObject>();
 
-    [Header("About Game End Canvas"), Space]
+    [Space]
+    [Header("About Game End Canvas:"), Space]
     [SerializeField] private GameObject levelEndedScreen;
 
     private void Start() => StartInit();
@@ -29,7 +31,7 @@ public class GameManager : Singleton<GameManager>
 
     private void UpdateInit()
     {
-        GameEndChecker();
+        //GameEndChecker();
     }
 
     private void GameEndChecker()

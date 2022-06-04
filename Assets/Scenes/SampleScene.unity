@@ -2600,7 +2600,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1388252134
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4519,6 +4519,10 @@ PrefabInstance:
     - target: {fileID: 2047575935142890107, guid: c28fa4ebb1d83504e80f1ef6c37d7c78, type: 3}
       propertyPath: m_Name
       value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047575935142890107, guid: c28fa4ebb1d83504e80f1ef6c37d7c78, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3198844600816581212, guid: c28fa4ebb1d83504e80f1ef6c37d7c78, type: 3}
       propertyPath: m_RootOrder

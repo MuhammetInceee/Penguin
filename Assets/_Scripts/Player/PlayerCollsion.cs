@@ -44,6 +44,7 @@ public class PlayerCollsion : MonoBehaviour
 
         if ((col.CompareTag(gameObject.tag) && col.gameObject.layer != gameObject.layer) || col.CompareTag("Seal") || col.CompareTag("Obstacle"))
         {
+            if(lastPos == null) return;
             transform.DOMove(lastPos.transform.position, recoilDur);
             _playerMovement.canMove = false;
             _playerMovement.IsStop();

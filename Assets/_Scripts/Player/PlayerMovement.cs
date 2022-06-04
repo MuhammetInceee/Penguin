@@ -71,6 +71,11 @@ public class PlayerMovement : MonoBehaviour
             transform.Translate(new Vector2(0, -1 * playerSpeed * Time.deltaTime));
     }
 
+    public void Deneme()
+    {
+        print("amina kodumun sikkirigi");
+    }
+
     public void LeftButtonMovement()
     {
         _goLeft = true;
@@ -123,38 +128,32 @@ public class PlayerMovement : MonoBehaviour
         {
             upButton.gameObject.SetActive(false);
             leftButton.gameObject.SetActive(false);
-            print("third");
         }
         
         else if (Pos.x <= leftUpCorner.transform.position.x)
         {
             leftButton.gameObject.SetActive(false);
-            print("first");
         }
 
         else if (Pos.y >= leftUpCorner.transform.position.y)
         {
             upButton.gameObject.SetActive(false);
-            print("second");
         }
         
         if (Pos.x >= rightBottomCorner.transform.position.x && Pos.y <= rightBottomCorner.transform.position.y)
         {
             downButton.gameObject.SetActive(false);
             rightButton.gameObject.SetActive(false);
-            print("last");
         }
         
         else if (Pos.x >= rightBottomCorner.transform.position.x)
         {
             rightButton.gameObject.SetActive(false);
-            print("fourth");
         }
 
         else if (Pos.y <= rightBottomCorner.transform.position.y)
         {
             downButton.gameObject.SetActive(false);
-            print("fifth");
         }
         
         
