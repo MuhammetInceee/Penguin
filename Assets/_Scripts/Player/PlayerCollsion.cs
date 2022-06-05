@@ -11,6 +11,11 @@ public class PlayerCollsion : MonoBehaviour
     [SerializeField] private float penguinDestroyDur;
     [SerializeField] private float recoilDur;
 
+    private float MatchPenguin
+    {
+        get => GameManager.Instance.matchedPenguin;
+        set => GameManager.Instance.matchedPenguin = value;
+    }
     private Vector2 Pos
     {
         get => transform.position;
@@ -32,11 +37,7 @@ public class PlayerCollsion : MonoBehaviour
 
         if (col.CompareTag(gameObject.tag) && col.gameObject.layer == gameObject.layer)
         {
-            GameManager.Instance.score += 0.5f;
-            if (GameManager.Instance.activePenguin.Contains(col.gameObject))
-                GameManager.Instance.activePenguin.Remove(col.gameObject);
-            if (GameManager.Instance.activePenguin.Contains(gameObject))
-                GameManager.Instance.activePenguin.Remove(gameObject);
+            MatchPenguin += 0.5f;
             Destroy(col.gameObject, penguinDestroyDur);
             Destroy(gameObject, penguinDestroyDur);
             _selectManager.selectedGo = null;
@@ -52,8 +53,6 @@ public class PlayerCollsion : MonoBehaviour
 
         if (col.CompareTag("DestroyArea"))
         {
-            if (GameManager.Instance.activePenguin.Contains(gameObject))
-                GameManager.Instance.activePenguin.Remove(gameObject);
             Destroy(gameObject, penguinDestroyDur);
             _selectManager.selectedGo = null;
         }
