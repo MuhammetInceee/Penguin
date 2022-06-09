@@ -64,5 +64,10 @@ public class ButtonsManager : MonoBehaviour
                 break;
         }
     }
+
+    public void BackMenuButton()
+    {
+        SceneManager.LoadScene(0);
+    }
     
 }

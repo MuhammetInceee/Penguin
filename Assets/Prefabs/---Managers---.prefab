@@ -138,6 +138,7 @@ MonoBehaviour:
   levelMatchNeeded: 1
   visualizeDelayer: 0.5
   levelEndedScreen: {fileID: 0}
+  neededPenguinText: {fileID: 0}
 --- !u!1 &6534855878414111828
 GameObject:
   m_ObjectHideFlags: 0

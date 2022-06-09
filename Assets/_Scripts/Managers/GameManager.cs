@@ -24,7 +24,7 @@ public class GameManager : Singleton<GameManager>
     {
         GameEndChecker();
         _leftPenguin = levelMatchNeeded - matchedPenguin;
-        neededPenguinText.text = "Needed Penguin : " + _leftPenguin;
+        neededPenguinText.text = "Match needed to penguins  : " + _leftPenguin;
     }
 
     private void GameEndChecker()
