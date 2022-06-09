@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class LevelLockHolder : MonoBehaviour
 {
     [Header("About Button and Its Images: "), Space]
@@ -34,5 +36,10 @@ public class LevelLockHolder : MonoBehaviour
         levelLocker[4].SetActive(PlayerPrefs.GetInt("Level6Lock") == 0);
         levelLocker[5].SetActive(PlayerPrefs.GetInt("Level7Lock") == 0);
         levelLocker[6].SetActive(PlayerPrefs.GetInt("Level8Lock") == 0);
+    }
+    
+    public void LevelButton(int level)
+    {
+        SceneManager.LoadScene(level);
     }
 }
