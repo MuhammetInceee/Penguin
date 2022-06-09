@@ -1,12 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using MuhammetInce.DesignPattern.Singleton;
-using TMPro;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : Singleton<GameManager>
 {
+    private float _leftPenguin;
+    
     [Header("About Matched Penguin: "), Space]
     public float matchedPenguin;
     [SerializeField] private float levelMatchNeeded;
@@ -24,7 +23,8 @@ public class GameManager : Singleton<GameManager>
     private void UpdateInit()
     {
         GameEndChecker();
-        neededPenguinText.text = "Needed Penguin : " + levelMatchNeeded;
+        _leftPenguin = levelMatchNeeded - matchedPenguin;
+        neededPenguinText.text = "Needed Penguin : " + _leftPenguin;
     }
 
     private void GameEndChecker()

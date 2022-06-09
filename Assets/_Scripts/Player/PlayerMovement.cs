@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -27,19 +24,9 @@ public class PlayerMovement : MonoBehaviour
 
 
     private bool Stopper => GetComponent<Rigidbody2D>().velocity.x is <= 0 and <= 0;
-    private Vector3 Pos
-    {
-        get => transform.position;
-        set => transform.position = value;
-    }
-
-    private void Start() => StartInit();
+    private Vector3 Pos => transform.position;
     private void Update() => UpdateInit();
-
-    private void StartInit()
-    {
-        
-    }
+    
     private void UpdateInit()
     {
         ButtonChecker();
@@ -70,12 +57,6 @@ public class PlayerMovement : MonoBehaviour
         if (_goDown)
             transform.Translate(new Vector2(0, -1 * playerSpeed * Time.deltaTime));
     }
-
-    public void Deneme()
-    {
-        print("amina kodumun sikkirigi");
-    }
-
     public void LeftButtonMovement()
     {
         _goLeft = true;
@@ -155,8 +136,6 @@ public class PlayerMovement : MonoBehaviour
         {
             downButton.gameObject.SetActive(false);
         }
-        
-        
     }
     #endregion
 }
