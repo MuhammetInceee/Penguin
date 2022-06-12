@@ -769,7 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 577e769c0fd14a9418b764b3df0fa21a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 1
+  playerSpeed: 1.5
   canMove: 0
   leftButton: {fileID: 5478039650468272087}
   rightButton: {fileID: 5478039649383586237}
@@ -790,8 +790,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastPos: {fileID: 0}
-  penguinDestroyDur: 0.5
-  recoilDur: 0
+  penguinDestroyDur: 0.3
+  recoilDur: 0.2
 --- !u!1 &5478039650891025573
 GameObject:
   m_ObjectHideFlags: 0
